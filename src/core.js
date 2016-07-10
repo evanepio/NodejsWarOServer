@@ -1,8 +1,8 @@
-import {List} from 'immutable';
+import {List, Map} from 'immutable';
 import {v4} from 'node-uuid';
 
 export function createGame() {
-    return {players: {}};
+    return Map({players: Map({})});
 }
 
 export function createPlayer(name) {

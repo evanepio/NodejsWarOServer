@@ -1,4 +1,4 @@
-import {List} from 'immutable';
+import {List,Map} from 'immutable';
 import {expect} from 'chai';
 
 import {createGame, createPlayer} from '../src/core';
@@ -8,12 +8,12 @@ describe('createGame', () => {
     it('sets default player map', () => {
         const game = createGame();
 
-        expect(game.players).to.exist;
+        expect(game.get('players')).to.equal(Map({}));
     });
     it('sets an empty player map', () => {
         const game = createGame();
 
-        expect(game.players).to.be.empty;
+        expect(game.get('players').count()).to.equal(0);
     });
 });
 
