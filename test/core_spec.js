@@ -5,10 +5,15 @@ import {createGame, createPlayer} from '../src/core';
 
 
 describe('createGame', () => {
-    it('sets an empty player map', () => {
+    it('sets default player map', () => {
         const game = createGame();
 
         expect(game.players).to.exist;
+    });
+    it('sets an empty player map', () => {
+        const game = createGame();
+
+        expect(game.players).to.be.empty;
     });
 });
 
