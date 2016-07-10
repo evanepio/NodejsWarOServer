@@ -1,26 +1,34 @@
 import {List} from 'immutable';
 import {expect} from 'chai';
 
-import {createPlayer} from '../src/core';
+import {createGame, createPlayer} from '../src/core';
+
+
+describe('createGame', () => {
+    it('sets an empty player map', () => {
+        const game = createGame();
+
+        expect(game).to.exist
+    })
+});
 
 describe('createPlayer', () => {
-        it('sets name properly', () => {
-            const name = 'someName';
-            const player = createPlayer(name);
+    it('sets name properly', () => {
+        const name = 'someName';
+        const player = createPlayer(name);
 
-            expect(player.name).to.equal(name);
-        });
+        expect(player.name).to.equal(name);
+    });
 
-        it('sets a non-empty ID', () => {
-            const player = createPlayer('someName');
+    it('sets a non-empty ID', () => {
+        const player = createPlayer('someName');
 
-            expect(player.id).to.exist;
-        });
+        expect(player.id).to.exist;
+    });
 
-        it('initializes an empty hand', () => {
-            const player = createPlayer('someName');
+    it('initializes an empty hand', () => {
+        const player = createPlayer('someName');
 
-            expect(player.hand).to.equal(List.of());
-        });
-    }
-);
+        expect(player.hand).to.equal(List.of());
+    });
+});
