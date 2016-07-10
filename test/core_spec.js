@@ -8,7 +8,7 @@ describe('createGame', () => {
     it('sets an empty player map', () => {
         const game = createGame();
 
-        expect(game).to.exist
+        expect(game).to.exist;
     })
 });
 
