@@ -14,7 +14,7 @@ describe('createPlayer', () => {
         it('sets a non-empty ID', () => {
             const player = createPlayer('someName');
 
-            expect(player.id).to.not.be.empty;
+            expect(player.id).to.exist;
         });
 
         it('initializes an empty hand', () => {
