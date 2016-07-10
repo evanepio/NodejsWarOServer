@@ -2,7 +2,7 @@ import {List} from 'immutable';
 import {v4} from 'node-uuid';
 
 export function createGame() {
-    return {};
+    return {players: {}};
 }
 
 export function createPlayer(name) {
