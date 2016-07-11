@@ -11,6 +11,5 @@ export function createPlayer(name) {
 
 export function addPlayerToGame(game, player) {
     const players = game.get('players').set(player.id, player);
-    const newGame = game.set('players', players);
-    return newGame;
+    return game.set('players', players);;
 }
