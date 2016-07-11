@@ -1,45 +1,52 @@
-import {List,Map} from 'immutable';
+import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
 import {createGame, createPlayer, addPlayerToGame} from '../src/core';
 
 
-describe('createGame', function() {
-    it('sets default player map', function() {
+describe('createGame', function () {
+    it('sets default player map', function () {
         const game = createGame();
 
         expect(game.get('players')).to.equal(Map({}));
     });
-    it('sets an empty player map', function() {
+    it('sets an empty player map', function () {
         const game = createGame();
 
         expect(game.get('players').count()).to.equal(0);
     });
 });
 
-describe('createPlayer', function() {
-    it('sets name properly', function() {
+describe('createPlayer', function () {
+    it('sets name properly', function () {
         const name = 'someName';
         const player = createPlayer(name);
 
         expect(player.name).to.equal(name);
     });
 
-    it('sets a non-empty ID', function() {
+    it('sets a non-empty ID', function () {
         const player = createPlayer('someName');
 
         expect(player.id).to.exist;
     });
 
-    it('initializes an empty hand', function() {
+    it('initializes an empty hand', function () {
         const player = createPlayer('someName');
 
         expect(player.hand).to.equal(List.of());
     });
+
+    it('creates players with unique ids', function () {
+        const player1 = createPlayer('someName');
+        const player2 = createPlayer('someName');
+
+        expect(player1.id).to.not.equal(player2.id);
+    });
 });
 
-describe('addPlayerToGame', function() {
-    it('increases player count when adding a player', function() {
+describe('addPlayerToGame', function () {
+    it('increases player count when adding a player', function () {
         const player = createPlayer('someName');
         let game = createGame();
 
