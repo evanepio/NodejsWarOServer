@@ -1,7 +1,7 @@
 import {List,Map} from 'immutable';
 import {expect} from 'chai';
 
-import {createGame, createPlayer} from '../src/core';
+import {createGame, createPlayer, addPlayerToGame} from '../src/core';
 
 
 describe('createGame', function() {
@@ -35,5 +35,19 @@ describe('createPlayer', function() {
         const player = createPlayer('someName');
 
         expect(player.hand).to.equal(List.of());
+    });
+});
+
+describe('addPlayerToGame', function() {
+    it('increases player count when adding a player', function() {
+        const player = createPlayer('someName');
+        let game = createGame();
+
+        const previousCount = game.get('players').count();
+
+        game = addPlayerToGame(game, player);
+
+        expect(previousCount).to.equal(0);
+        expect(game.get('players').count()).to.equal(1);
     });
 });
