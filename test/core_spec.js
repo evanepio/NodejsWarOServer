@@ -3,13 +3,13 @@ import {expect} from 'chai';
 
 import {createGame, createPlayer, addPlayerToGame} from '../src/core';
 
-
 describe('createGame', function () {
     it('sets default player map', function () {
         const game = createGame();
 
         expect(game.get('players')).to.equal(Map({}));
     });
+
     it('sets an empty player map', function () {
         const game = createGame();
 
@@ -46,7 +46,7 @@ describe('createPlayer', function () {
 });
 
 describe('addPlayerToGame', function () {
-    it('increases player count when adding a player', function () {
+    it('increases player count to 1 when adding a player', function () {
         const player = createPlayer('someName');
         let game = createGame();
 
@@ -56,5 +56,16 @@ describe('addPlayerToGame', function () {
 
         expect(previousCount).to.equal(0);
         expect(game.get('players').count()).to.equal(1);
+    });
+
+    it('increase player count to 2 when adding two players', function () {
+        const player1 = createPlayer('someName');
+        const player2 = createPlayer('someName');
+        let game = createGame();
+
+        game = addPlayerToGame(game, player1);
+        game = addPlayerToGame(game, player2);
+
+        expect(game.get('players').count()).to.equal(2);
     });
 });
