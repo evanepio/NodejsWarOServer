@@ -6,10 +6,10 @@ export function createGame() {
 }
 
 export function createPlayer(name) {
-    return {name, id: v4(), hand: List.of()};
+    return Map({name, id: v4(), hand: List.of()});
 }
 
 export function addPlayerToGame(game, player) {
-    const players = game.get('players').set(player.id, player);
+    const players = game.get('players').set(player.get('id'), player);
     return game.set('players', players);
 }

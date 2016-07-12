@@ -22,26 +22,26 @@ describe('createPlayer', function () {
         const name = 'someName';
         const player = createPlayer(name);
 
-        expect(player.name).to.equal(name);
+        expect(player.get('name')).to.equal(name);
     });
 
     it('sets a non-empty ID', function () {
         const player = createPlayer('someName');
 
-        expect(player.id).to.exist;
+        expect(player.get('id')).to.exist;
     });
 
     it('initializes an empty hand', function () {
         const player = createPlayer('someName');
 
-        expect(player.hand).to.equal(List.of());
+        expect(player.get('hand')).to.equal(List.of());
     });
 
     it('creates players with unique ids', function () {
         const player1 = createPlayer('someName');
         const player2 = createPlayer('someName');
 
-        expect(player1.id).to.not.equal(player2.id);
+        expect(player1.get('id')).to.not.equal(player2.get('id'));
     });
 });
 
