@@ -68,4 +68,14 @@ describe('addPlayerToGame', function () {
 
         expect(game.get('players').count()).to.equal(2);
     });
+
+    it('does not allow a player to be added twice', function(){
+        const player = createPlayer('someName');
+        let game = createGame();
+
+        game = addPlayerToGame(game, player);
+        game = addPlayerToGame(game, player);
+
+        expect(game.get('players').count()).to.equal(1);
+    });
 });
