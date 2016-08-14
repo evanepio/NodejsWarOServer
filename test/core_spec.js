@@ -1,7 +1,8 @@
 import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
-import {createGame, createPlayer, addPlayerToGame} from '../src/core';
+import {createGame} from '../src/core';
+import {createPlayer, addPlayerToGame} from '../src/player';
 
 describe('createGame', function () {
     it('sets default player map', function () {
