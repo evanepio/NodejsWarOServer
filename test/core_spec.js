@@ -1,6 +1,7 @@
 import {expect} from 'chai';
+import {Map} from 'immutable';
 
-import {createGame} from '../src/core';
+import {createGame, setGame} from '../src/core';
 
 describe('createGame', function () {
     it('sets an id', function () {
@@ -20,5 +21,16 @@ describe('createGame', function () {
         const game = createGame();
 
         expect(game.get('players').count()).to.equal(0);
+    });
+});
+
+describe('setGame', function() {
+    it('sets the game into the appState map', function(){
+        const initialAppState = Map({});
+        const game = createGame();
+
+        const newAppState = setGame(initialAppState, game);
+
+        expect(newAppState.get('games').count()).to.equal(1);
     });
 });
