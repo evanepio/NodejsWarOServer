@@ -33,4 +33,14 @@ describe('setGame', function() {
 
         expect(newAppState.get('games').count()).to.equal(1);
     });
+
+    it('can set two games into the map', function() {
+        const initialAppState = Map({});
+        const game1 = createGame();
+        const game2 = createGame();
+
+        const newAppState = setGame(setGame(initialAppState, game1), game2);
+
+        expect(newAppState.get('games').count()).to.equal(2);
+    });
 });

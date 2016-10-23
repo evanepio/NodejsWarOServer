@@ -6,7 +6,9 @@ export function createGame() {
 }
 
 export function setGame(appState, game){
-    const gameMap = Map({}).set(game.get('id'), game);
+    const initialGameMap = appState.get('games') || Map({});
+
+    const gameMap = initialGameMap.set(game.get('id'), game);
 
     return Map({'games': gameMap});
 }
