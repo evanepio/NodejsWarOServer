@@ -4,27 +4,27 @@ import {expect} from 'chai';
 import {createGame} from '../src/core';
 import {createPlayer, addPlayerToGame} from '../src/player';
 
-describe('createPlayer', function () {
-    it('sets name properly', function () {
+describe('createPlayer', function() {
+    it('sets name properly', function() {
         const name = 'someName';
         const player = createPlayer(name);
 
         expect(player.get('name')).to.equal(name);
     });
 
-    it('sets a non-empty ID', function () {
+    it('sets a non-empty ID', function() {
         const player = createPlayer('someName');
 
         expect(player.get('id')).to.exist;
     });
 
-    it('initializes an empty hand', function () {
+    it('initializes an empty hand', function() {
         const player = createPlayer('someName');
 
         expect(player.get('hand')).to.equal(List.of());
     });
 
-    it('creates players with unique ids', function () {
+    it('creates players with unique ids', function() {
         const player1 = createPlayer('someName');
         const player2 = createPlayer('someName');
 
@@ -32,8 +32,8 @@ describe('createPlayer', function () {
     });
 });
 
-describe('addPlayerToGame', function () {
-    it('increases player count to 1 when adding a player', function () {
+describe('addPlayerToGame', function() {
+    it('increases player count to 1 when adding a player', function() {
         const player = createPlayer('someName');
         let game = createGame();
 
@@ -45,7 +45,7 @@ describe('addPlayerToGame', function () {
         expect(game.get('players').count()).to.equal(1);
     });
 
-    it('increase player count to 2 when adding two players', function () {
+    it('increase player count to 2 when adding two players', function() {
         const player1 = createPlayer('someName');
         const player2 = createPlayer('someName');
         let game = createGame();
